@@ -1452,8 +1452,15 @@ void i_player_list::perform_animations(lag_record *const current, lag_record *co
 			else if (i == resolver_networked)
 				current->lower_body_yaw_target = player->get_lower_body_yaw_target();
 
-			// TODO: sync lby here.
-
+			// synchronize lby across all resolver directions when it changes
+                        if (i == resolver_networked &&
+                                current->lower_body_yaw_target != player->get_lower_body_yaw_target())
+                        {
+                                current->lower_body_yaw_target = player->get_lower_body_yaw_target();
+                                for (auto k = 0; k < resolver_direction_max; ++k)
+                                        lower_body_yaw[k] = current->lower_body_yaw_target;
+                        }
+			
 			// store current pose parameters.
 			current->abs_ang[i] = {0.f, state->foot_yaw, 0.f};
 			current->poses[i] = player->get_pose_parameter();
