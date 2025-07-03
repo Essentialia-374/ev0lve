@@ -437,7 +437,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(DXSDK_DIR)Include;$(ProjectDir)renderer\include;$(ProjectDir)contrib\tinyformat;$(ProjectDir)contrib\nlohmann;$(ProjectDir)contrib\miniz;$(ProjectDir)contrib\luajit\src;$(ProjectDir)contrib\gui\include;$(ProjectDir)contrib;$(ProjectDir);C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ProjectDir)PolyHook_2_0;$(ProjectDir)PolyHook_2_0\asmjit\src;$(ProjectDir)PolyHook_2_0\zydis\include;$(ProjectDir)PolyHook_2_0\zydis\dependencies\zycore\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(DXSDK_DIR)Include;$(ProjectDir)renderer\include;$(ProjectDir)contrib\tinyformat;$(ProjectDir)contrib\nlohmann;$(ProjectDir)contrib\miniz;$(ProjectDir)contrib\luajit\src;$(ProjectDir)contrib\gui\include;$(ProjectDir)contrib;$(ProjectDir);C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ProjectDir)PolyHook;$(ProjectDir)PolyHook\asmjit\src;$(ProjectDir)PolyHook\zydis\include;$(ProjectDir)PolyHook\zydis\dependencies\zycore\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <LibraryPath>$(DXSDK_DIR)Lib\x86;$(ProjectDir)contrib\renderer\debug;$(ProjectDir)contrib\luajit\src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;D:\PolyHook_2_0-master\build32\Debug;D:\PolyHook_2_0-master\build32\zydis\Debug;$(LibraryPath)</LibraryPath>
