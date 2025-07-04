@@ -1,4 +1,3 @@
-
 #include <detail/aim_helper.h>
 #include <detail/custom_prediction.h>
 #include <hacks/movement.h>
@@ -32,9 +31,41 @@ void movement::fix_bhop(sdk::user_cmd *cmd)
 {
 	if (cfg.misc.bhop.get() && !GET_CONVAR_INT("sv_autobunnyhopping") && game->local_player->is_on_ground())
 	{
-		cmd->buttons &= ~user_cmd::jump;
+		cmd->buttons &= ~user_cmd::buttons::jump;
 		pred.repredict(cmd);
 	}
+}
+
+void movement::fast_stop(sdk::user_cmd* const cmd)
+{
+	if (!cfg.misc.fast_stop.get())
+		return;
+
+	if (!game->local_player->is_on_ground())
+		return;
+
+	if (cmd->buttons & (sdk::user_cmd::forward | sdk::user_cmd::back | sdk::user_cmd::move_left | sdk::user_cmd::move_right))
+		return;
+
+	const auto velocity = game->local_player->get_velocity();
+	const float speed_2d = velocity.length2d();
+
+	if (speed_2d < 1.0f)
+	{
+		cmd->forwardmove = 0.0f;
+		cmd->sidemove = 0.0f;
+		return;
+	}
+
+	vec3 velocity_angle_vec;
+	vector_angles(velocity, velocity_angle_vec);
+
+	float yaw_diff = angle_diff(cmd->viewangles.y, velocity_angle_vec.y);
+
+	float rad = DEG2RAD(yaw_diff);
+
+	cmd->forwardmove = -std::cos(rad) * 450.f;
+	cmd->sidemove    = -std::sin(rad) * 450.f;
 }
 
 void movement::autostrafe(user_cmd *const cmd, bool can_jump)
@@ -71,7 +102,6 @@ void movement::autostrafe(user_cmd *const cmd, bool can_jump)
 		cmd->sidemove = 0.f;
 	}
 
-	// abort if trying to strafe without movement strafer
 	if (cmd->forwardmove != 0.f || cmd->sidemove != 0.f)
 		return;
 
