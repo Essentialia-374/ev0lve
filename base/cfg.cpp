@@ -352,6 +352,7 @@ void cfg_t::init()
 	ADD(world_esp.enemy_radar);
 
 	ADD(misc.bhop);
+	ADD(misc.fast_stop);
 	ADD(misc.peek_assistant);
 	ADD(misc.peek_assistant_mode);
 	ADD(misc.peek_assistant_color);

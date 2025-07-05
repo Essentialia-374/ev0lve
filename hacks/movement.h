@@ -1,4 +1,3 @@
-
 #ifndef HACKS_MOVEMENT_H
 #define HACKS_MOVEMENT_H
 
@@ -15,6 +14,7 @@ public:
 	void bhop(sdk::user_cmd *cmd);
 	void fix_bhop(sdk::user_cmd *cmd);
 	void edge_jump(sdk::user_cmd *cmd);
+	void fast_stop(sdk::user_cmd* cmd);
 
 private:
 	void autostrafe(sdk::user_cmd *cmd, bool can_jump);

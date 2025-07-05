@@ -33,6 +33,8 @@ void menu::group::misc_general(std::shared_ptr<layout>& e)
 {
 	ADD("bunny hop", "misc.general.bunny_hop", checkbox, cfg.misc.bhop);
 
+	ADD("fast stop", "misc.general.fast_stop", checkbox, cfg.misc.fast_stop);
+
 	const auto auto_strafe = MAKE("misc.general.auto_strafe", combo_box, cfg.misc.autostrafe);
 	auto_strafe->add({
 		MAKE("misc.general.auto_strafe.disabled", selectable, XOR("disabled")),
