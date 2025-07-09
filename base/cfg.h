@@ -464,7 +464,7 @@ struct cfg_t
 	struct misc_s
 	{
 		setting<bool> bhop{}, edge_jump{}, avoid_collisions{}, nade_assistant{}, peek_assistant{}, preserve_killfeed{},
-			penetration_crosshair{};
+			penetration_crosshair{}, fast_stop{};
 		setting<color> peek_assistant_color{color(0, 120, 255)};
 		setting<bitset> peek_assistant_mode{1 << peek_assistant_free_roam};
 		setting<bool> eventlog{};
